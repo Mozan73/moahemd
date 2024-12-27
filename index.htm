@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Light Store</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #000; /* اللون الأسود لزيادة التباين */
+      text-align: center;
+      overflow: hidden;
+      height: 100vh;
+      position: relative;
+      background: url('https://png.pngtree.com/thumb_back/fh260/background/20240928/pngtree-cozy-christmas-window-with-snow-and-ornaments-image_16278226.jpg') no-repeat center center fixed;
+      background-size: cover;
+      filter: brightness(1); /* زيادة السطوع */
+    }
+
+    header {
+      background-color: rgba(255, 223, 186, 0.8); /* لون فاتح */
+      padding: 20px;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 3px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* تقليل الظل */
+      color: #f39c12; /* لون ذهبي فاتح */
+      z-index: 2;
+    }
+
+    p {
+      font-size: 1.8rem;
+      margin: 20px 0;
+      font-family: 'Cursive', sans-serif;
+      color: #d35400; /* بني فاتح */
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); /* ظل خفيف */
+    }
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(90deg, #f7b731, #fdcb6e); /* ألوان دافئة فاتحة */
+      color: #000;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 1.5rem;
+      margin: 20px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      z-index: 2;
+    }
+
+    a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* ظل خفيف */
+    }
+
+    img {
+      width: 250px;
+      height: auto;
+      margin: 20px 0;
+      border-radius: 20px;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* ظل خفيف */
+      position: relative;
+      z-index: 2;
+    }
+
+    button {
+      padding: 15px 30px;
+      background: linear-gradient(90deg, #f7b731, #fdcb6e); /* ألوان دافئة فاتحة */
+      color: #000;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+      position: relative;
+      z-index: 2;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #fdcb6e, #f7b731); /* عكس الألوان */
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* ظل خفيف */
+    }
+
+    button:active {
+      transform: translateY(2px);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* ظل خفيف */
+    }
+
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      background: rgba(255, 255, 255, 0.9); /* ظل أبيض */
+      border-radius: 50%;
+      opacity: 0.9;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    .christmas-light {
+      position: absolute;
+      top: 20%;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: url('https://img.icons8.com/ios/50/ffffff/christmas-lights.png') repeat-x;
+      animation: blinkLights 1.5s infinite alternate;
+      z-index: 3;
+    }
+
+    @keyframes blinkLights {
+      0% {
+        opacity: 0.6;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header>Light Store</header>
+  <p>Welcome to Light Store</p>
+  <a href="https://discord.gg/QVWBz2Ca" target="_blank">Join My Discord Server</a>
+  <br>
+  <img src="download.jpeg">
+  <br>
+  <button onclick="window.location.href='https://discord.gg/QVWBz2Ca';">Click Me</button>
+
+  <div class="christmas-light"></div>
+
+  <script>
+    function generateSnowflakes() {
+      const numberOfSnowflakes = 100;
+      const body = document.body;
+
+      for (let i = 0; i < numberOfSnowflakes; i++) {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.style.width = `${Math.random() * 5 + 3}px`;
+        snowflake.style.height = snowflake.style.width;
+
+        snowflake.style.left = `${Math.random() * 100}vw`;
+
+        const animationDuration = Math.random() * 5 + 5;
+        const animationDelay = Math.random() * 10;
+
+        snowflake.style.animationDuration = `${animationDuration}s`;
+        snowflake.style.animationDelay = `${animationDelay}s`;
+        snowflake.style.animationTimingFunction = 'linear';
+        snowflake.style.animationIterationCount = 'infinite';
+
+        snowflake.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+        snowflake.style.animationName = 'fall';
+
+        body.appendChild(snowflake);
+      }
+    }
+
+    generateSnowflakes();
+  </script>
+</body>
+</html>
